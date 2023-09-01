@@ -3,22 +3,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pet
+  name: pet-data-management
   labels:
-    app: pet
+    app: pet-data-management
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: pet
+      app: pet-data-management
   template:
     metadata:
       labels:
-        app: pet
+        app: pet-data-management
     spec:
       containers:
-        - name: pet
-          image: username/pet:latest
+        - name: pet-data-management
+          image: username/pet-data-management:latest
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -43,22 +43,142 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: store
+  name: product-recommendation
   labels:
-    app: store
+    app: product-recommendation
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: store
+      app: product-recommendation
   template:
     metadata:
       labels:
-        app: store
+        app: product-recommendation
     spec:
       containers:
-        - name: store
-          image: username/store:latest
+        - name: product-recommendation
+          image: username/product-recommendation:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-purchase
+  labels:
+    app: product-purchase
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-purchase
+  template:
+    metadata:
+      labels:
+        app: product-purchase
+    spec:
+      containers:
+        - name: product-purchase
+          image: username/product-purchase:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: social-media-interaction
+  labels:
+    app: social-media-interaction
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: social-media-interaction
+  template:
+    metadata:
+      labels:
+        app: social-media-interaction
+    spec:
+      containers:
+        - name: social-media-interaction
+          image: username/social-media-interaction:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-review
+  labels:
+    app: product-review
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-review
+  template:
+    metadata:
+      labels:
+        app: product-review
+    spec:
+      containers:
+        - name: product-review
+          image: username/product-review:latest
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -85,15 +205,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: pet
+  name: pet-data-management
   labels:
-    app: pet
+    app: pet-data-management
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: pet
+    app: pet-data-management
 
 
 ---
@@ -102,13 +222,64 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: store
+  name: product-recommendation
   labels:
-    app: store
+    app: product-recommendation
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: store
+    app: product-recommendation
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-purchase
+  labels:
+    app: product-purchase
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: product-purchase
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: social-media-interaction
+  labels:
+    app: social-media-interaction
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: social-media-interaction
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-review
+  labels:
+    app: product-review
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: product-review
 

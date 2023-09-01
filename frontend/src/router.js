@@ -5,15 +5,20 @@ import Router from 'vue-router'
 Vue.use(Router);
 
 
-import PetManager from "./components/listers/PetCards"
-import PetDetail from "./components/listers/PetDetail"
+import PetDataManagementPetProfileManager from "./components/listers/PetDataManagementPetProfileCards"
+import PetDataManagementPetProfileDetail from "./components/listers/PetDataManagementPetProfileDetail"
 
-import ItemManager from "./components/listers/ItemCards"
-import ItemDetail from "./components/listers/ItemDetail"
-import OrderItemManager from "./components/listers/OrderItemCards"
-import OrderItemDetail from "./components/listers/OrderItemDetail"
-import CustomerManager from "./components/listers/CustomerCards"
-import CustomerDetail from "./components/listers/CustomerDetail"
+import ProductRecommendationRecommendedProductManager from "./components/listers/ProductRecommendationRecommendedProductCards"
+import ProductRecommendationRecommendedProductDetail from "./components/listers/ProductRecommendationRecommendedProductDetail"
+
+import ProductPurchasePurchasedProductManager from "./components/listers/ProductPurchasePurchasedProductCards"
+import ProductPurchasePurchasedProductDetail from "./components/listers/ProductPurchasePurchasedProductDetail"
+
+import SocialMediaInteractionSocialMediaPostManager from "./components/listers/SocialMediaInteractionSocialMediaPostCards"
+import SocialMediaInteractionSocialMediaPostDetail from "./components/listers/SocialMediaInteractionSocialMediaPostDetail"
+
+import ProductReviewProductReviewManager from "./components/listers/ProductReviewProductReviewCards"
+import ProductReviewProductReviewDetail from "./components/listers/ProductReviewProductReviewDetail"
 
 
 export default new Router({
@@ -21,52 +26,61 @@ export default new Router({
     base: process.env.BASE_URL,
     routes: [
             {
-                path: '/pets',
-                name: 'PetManager',
-                component: PetManager
+                path: '/petDataManagements/petProfiles',
+                name: 'PetDataManagementPetProfileManager',
+                component: PetDataManagementPetProfileManager
             },
             {
-                path: '/pets/:id',
-                name: 'PetDetail',
-                component: PetDetail
+                path: '/petDataManagements/petProfiles/:id',
+                name: 'PetDataManagementPetProfileDetail',
+                component: PetDataManagementPetProfileDetail
             },
 
             {
-                path: '/items',
-                name: 'ItemManager',
-                component: ItemManager
+                path: '/productRecommendations/recommendedProducts',
+                name: 'ProductRecommendationRecommendedProductManager',
+                component: ProductRecommendationRecommendedProductManager
             },
             {
-                path: '/items/:id',
-                name: 'ItemDetail',
-                component: ItemDetail
+                path: '/productRecommendations/recommendedProducts/:id',
+                name: 'ProductRecommendationRecommendedProductDetail',
+                component: ProductRecommendationRecommendedProductDetail
+            },
+
+            {
+                path: '/productPurchases/purchasedProducts',
+                name: 'ProductPurchasePurchasedProductManager',
+                component: ProductPurchasePurchasedProductManager
             },
             {
-                path: '/orderItems',
-                name: 'OrderItemManager',
-                component: OrderItemManager
+                path: '/productPurchases/purchasedProducts/:id',
+                name: 'ProductPurchasePurchasedProductDetail',
+                component: ProductPurchasePurchasedProductDetail
+            },
+
+            {
+                path: '/socialMediaInteractions/socialMediaPosts',
+                name: 'SocialMediaInteractionSocialMediaPostManager',
+                component: SocialMediaInteractionSocialMediaPostManager
             },
             {
-                path: '/orderItems/:id',
-                name: 'OrderItemDetail',
-                component: OrderItemDetail
+                path: '/socialMediaInteractions/socialMediaPosts/:id',
+                name: 'SocialMediaInteractionSocialMediaPostDetail',
+                component: SocialMediaInteractionSocialMediaPostDetail
+            },
+
+            {
+                path: '/productReviews/productReviews',
+                name: 'ProductReviewProductReviewManager',
+                component: ProductReviewProductReviewManager
             },
             {
-                path: '/customers',
-                name: 'CustomerManager',
-                component: CustomerManager
-            },
-            {
-                path: '/customers/:id',
-                name: 'CustomerDetail',
-                component: CustomerDetail
+                path: '/productReviews/productReviews/:id',
+                name: 'ProductReviewProductReviewDetail',
+                component: ProductReviewProductReviewDetail
             },
 
 
 
     ]
 })
-import PetManager from "./components/PetManager"
-import ItemManager from "./components/ItemManager"
-import OrderItemManager from "./components/OrderItemManager"
-import CustomerManager from "./components/CustomerManager"

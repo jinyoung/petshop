@@ -51,7 +51,7 @@
 
     Vue.use(VueGoogleMaps, {
         load: {
-            key: 'AIzaSyBsDzOopSQ-CIInjOETFnyQE_oTVytU2uk',
+            key: 'AIzaSyC25WBJaWKmod3bV1gX1oAjq7Myu3bIHyY',
             libraries: 'places', // This is required if you use the Autocomplete plugin
             region: "KR",
         },
@@ -136,35 +136,4 @@
 </script>
 
 <style scoped>
-    <div>
-        <v-card-title>
-        <v-card-text style = "margin-left:-15px;">
-            <div class="grey--text ml-4 address-v-text-field" v-if="editMode" style = "margin-top:-20px;">
-            <div class="grey--text ml-4" style="margin-top:-15px;" v-else>
-                Street :  {{value.street }}
-            <div class="grey--text ml-4 address-v-text-field" v-if="editMode" style = "margin-top:-20px;">
-            <div class="grey--text ml-4" v-else>
-                City : {{value.city }}
-            <div class="grey--text ml-4 address-v-text-field" v-if="editMode" style = "margin-top:-20px;">
-                <v-text-field label="State" v-model="value.state"/>
-            <div class="grey--text ml-4" v-else>
-                State :  {{value.state }}
-            <div class="grey--text ml-4 address-v-text-field" v-if="editMode" style = "margin-top:-20px;">
-                <v-text-field label="Zip" v-model="value.zip"/>
-            <div class="grey--text ml-4" v-else>
-                Zip :  {{value.zip }}
-export default {
-    name:"Address",
-    props: {
-        editMode: Boolean,
-        value : Object,
-        label : String,
-    },
-    data: () => ({
-        date: new Date().toISOString().substr(0, 10),
-    }),
-    
-}
-    .address-v-text-field {
-        margin-right:-30px;
 </style>

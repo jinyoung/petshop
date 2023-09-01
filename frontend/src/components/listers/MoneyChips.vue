@@ -18,7 +18,7 @@
                     </v-list-item-content>
                     <v-list-item-action v-if="editMode">
                         <v-btn icon @click="deleteItem(item)">
-                            <v-icon small color="grey lighten-1">mdi-delete</v-icon>
+                            <v-icon small color="secondary lighten-1">mdi-delete</v-icon>
                         </v-btn>
                     </v-list-item-action>
                 </v-list-item>
@@ -30,7 +30,7 @@
             <template slot="actions">
                 <v-spacer></v-spacer>
                 <v-btn
-                        color="deep-purple lighten-2"
+                        color="primary"
                         text
                         @click="edit"
                         v-if="!editMode"
@@ -39,7 +39,7 @@
                 </v-btn>
                 
                 <v-btn
-                        color="deep-purple lighten-2"
+                        color="primary"
                         text
                         @click="append(newValue)"
                         v-else
@@ -47,7 +47,7 @@
                     Add
                 </v-btn>
                 <v-btn
-                        color="deep-purple lighten-2"
+                        color="primary"
                         text
                         @click="remove"
                         v-if="!editMode"

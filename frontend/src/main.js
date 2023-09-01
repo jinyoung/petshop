@@ -5,6 +5,7 @@ import vuetify from "./plugins/vuetify";
 import Managing from "./components";
 import router from './router';
 Vue.config.productionTip = false;
+require('./GlobalStyle.css');
 
 const axios = require("axios").default;
 
@@ -30,8 +31,6 @@ axios.fixUrl = function(original){
   url.port = axios.backendUrl.port;
 
   return url.href;
-import router from './router'
-  if(!axios.backend) return original;
 }
 
 const templateFiles = require.context("./components", true);
@@ -46,11 +45,15 @@ templateFiles.keys().forEach(function(tempFiles) {
 Vue.use(Managing);
 const pluralCaseList = []
 
-pluralCaseList.push( {plural: "pets", pascal: "Pet"} )
+pluralCaseList.push( {plural: "petDataManagements/petProfiles", pascal: "PetDataManagementPetProfile"} )
 
-pluralCaseList.push( {plural: "items", pascal: "Item"} )
-pluralCaseList.push( {plural: "orderItems", pascal: "OrderItem"} )
-pluralCaseList.push( {plural: "customers", pascal: "Customer"} )
+pluralCaseList.push( {plural: "productRecommendations/recommendedProducts", pascal: "ProductRecommendationRecommendedProduct"} )
+
+pluralCaseList.push( {plural: "productPurchases/purchasedProducts", pascal: "ProductPurchasePurchasedProduct"} )
+
+pluralCaseList.push( {plural: "socialMediaInteractions/socialMediaPosts", pascal: "SocialMediaInteractionSocialMediaPost"} )
+
+pluralCaseList.push( {plural: "productReviews/productReviews", pascal: "ProductReviewProductReview"} )
 
 
 Vue.prototype.$ManagerLists.forEach(function(item, idx) {

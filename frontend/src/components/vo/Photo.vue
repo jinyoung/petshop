@@ -5,6 +5,7 @@
         </v-card-title>
 
         <v-img
+            :key="photoRender"
             style="width:400px; height:300px; border-radius:10px; position:relative; margin-left:5px; top:5px;"
             :style="editMode ? 'cursor:pointer;':''"
             :src="value.imgFile ? value.imgFile:'https://cdn.vuetifyjs.com/images/cards/cooking.png'"
@@ -14,7 +15,7 @@
 
         <v-card-text v-if="value">
             <div v-if="editMode">
-                <v-text-field label="Image Name" v-model="value.imgName"/>
+                <v-text-field label="" v-model="value.imgName"/>
                 <slot name="actions"></slot>
             </div>
         </v-card-text>
@@ -29,6 +30,9 @@
             value : Object,
             label : String, 
         },
+        data: () => ({
+            photoRender:0
+        }),
         created(){
             if(!this.value) {
                 this.value = {
@@ -62,7 +66,7 @@
                     reader.onload = function () {
                         var result = reader.result;
                         me.value.imgFile = result;
-                        
+                        me.photoRender++;
                     };
                     reader.readAsDataURL( file );
                 };
@@ -72,37 +76,4 @@
 </script>
 
 <style scoped>
-    <div>
-        <v-card-title>
-            
-        <v-card-text style = "margin-left:-15px; margin-top:10px;">
-            <div class="grey--text ml-4 photo-v-text-field" v-if="editMode" style = "margin-top:-20px;">
-                <v-text-field label="Id" v-model="value.id"/>
-            <div class="grey--text ml-4" style="margin-top:-25px;" v-else>
-                Id :  {{value.id }}
-            <div class="grey--text ml-4 photo-v-text-field" v-if="editMode" style = "margin-top:-20px;">
-                <v-text-field label="Name" v-model="value.name"/>
-            <div class="grey--text ml-4" v-else>
-                Name :  {{value.name }}
-            <div class="grey--text ml-4 photo-v-text-field" v-if="editMode" style = "margin-top:-20px;">
-                <v-text-field label="Url" v-model="value.url"/>
-            <div class="grey--text ml-4" v-else>
-                Url :  {{value.url }}
-export default {
-    name:"Photo",
-    props: {
-        editMode: Boolean,
-        value : Object,
-        label : String, 
-    },
-    data: () => ({
-        date: new Date().toISOString().substr(0, 10),
-    }),
-    
-    
-}
-    .photo-v-text-field {
-        margin-right:-30px;
-    .address-v-text-field {
-        margin-top:5px;
 </style>
